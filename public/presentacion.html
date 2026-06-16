@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Integral de RRHH — Presentación Comercial</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; color: #1f2937; background: #fff; }
+
+  /* ── Variables 5 colores ── */
+  :root {
+    --c1: #e28000;   /* naranja oscuro  */
+    --c2: #ff9800;   /* naranja medio   */
+    --c3: #ffc340;   /* dorado          */
+    --c4: #008080;   /* teal            */
+    --c5: #FFFFFF;   /* blanco          */
+    --c1-light: #fff3e0;
+    --c4-light: #e0f4f4;
+    --gray: #6b7280;
+    --light: #f8f9fa;
+  }
+
+  /* ── Utilities ── */
+  section { padding: 80px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    font-size: .75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--c1); background: var(--c1-light);
+    border: 1px solid var(--c3);
+    padding: 4px 14px; border-radius: 20px; margin-bottom: 12px;
+  }
+  .section-title { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: .5rem; }
+  .section-sub   { color: var(--gray); font-size: 1rem; max-width: 560px; }
+  .divider-bar   { width: 50px; height: 4px; background: linear-gradient(90deg, var(--c1), var(--c3), var(--c4)); border-radius: 2px; margin: 16px 0 32px; }
+
+  /* ── Navbar ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 3px solid var(--c2);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  nav .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; color: var(--c1); }
+  nav .logo i { font-size: 1.5rem; color: var(--c2); }
+  nav .nav-links { display: flex; gap: 28px; }
+  nav .nav-links a { text-decoration: none; color: #374151; font-size: .88rem; font-weight: 500; transition: color .2s; }
+  nav .nav-links a:hover { color: var(--c1); }
+  nav .btn-nav {
+    background: var(--c4); color: var(--c5); border: none;
+    padding: 8px 22px; border-radius: 8px; font-weight: 600;
+    font-size: .88rem; cursor: pointer; text-decoration: none;
+    transition: background .2s;
+  }
+  nav .btn-nav:hover { background: #006666; }
+
+  /* ── Hero ── */
+  #hero {
+    padding-top: 120px; padding-bottom: 80px;
+    background: linear-gradient(150deg, var(--c5) 50%, var(--c1-light) 100%);
+    min-height: 92vh; display: flex; align-items: center;
+  }
+  #hero .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  #hero h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.15; margin-bottom: 1rem; }
+  #hero h1 span { color: var(--c1); }
+  #hero p { color: var(--gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary-main {
+    background: var(--c1); color: var(--c5); border: none;
+    padding: 13px 30px; border-radius: 10px; font-weight: 700;
+    font-size: .95rem; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 4px 14px rgba(226,128,0,.35);
+  }
+  .btn-primary-main:hover { background: #b86600; transform: translateY(-2px); }
+  .btn-secondary-main {
+    background: transparent; color: var(--c4);
+    border: 2px solid var(--c4);
+    padding: 13px 28px; border-radius: 10px; font-weight: 700;
+    font-size: .95rem; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .2s;
+  }
+  .btn-secondary-main:hover { background: var(--c4-light); }
+
+  /* Hero mockup */
+  .hero-mockup {
+    background: #1a1a2e; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.25); border: 1px solid #2a2d35;
+  }
+  .mockup-bar {
+    background: linear-gradient(90deg, var(--c1), var(--c2));
+    padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .mockup-bar .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.4); }
+  .mockup-body { display: flex; min-height: 280px; }
+  .mockup-sidebar {
+    width: 140px;
+    background: linear-gradient(180deg, var(--c1), var(--c2));
+    padding: 12px 8px; flex-shrink: 0;
+  }
+  .mock-brand { font-size: .7rem; font-weight: 700; color: var(--c5); padding: 4px 8px 10px; border-bottom: 1px solid rgba(255,255,255,.2); margin-bottom: 8px; }
+  .mock-label { font-size: .55rem; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: 1px; padding: 4px 8px 2px; }
+  .mock-link {
+    display: flex; align-items: center; gap: 6px;
+    font-size: .62rem; color: rgba(255,255,255,.82);
+    padding: 4px 8px; border-radius: 4px; margin: 1px 0;
+  }
+  .mock-link.active { background: var(--c4); color: var(--c5); font-weight: 700; }
+  .mock-link i { font-size: .7rem; }
+  .mockup-content { flex: 1; background: #f8f9fa; padding: 16px; }
+  .mock-topbar { background: var(--c5); border-radius: 6px; padding: 6px 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; font-size: .62rem; color: #6b7280; border: 1px solid #e5e7eb; border-bottom: 2px solid var(--c2); }
+  .mock-topbar span { color: var(--c1); font-weight: 700; }
+  .mock-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+  .mock-stat { background: var(--c5); border-radius: 6px; padding: 8px; border: 1px solid #e5e7eb; }
+  .mock-stat-val { font-size: .9rem; font-weight: 800; color: #1f2937; }
+  .mock-stat-lbl { font-size: .52rem; color: #9ca3af; }
+  .mock-stat-icon { font-size: .75rem; margin-bottom: 2px; }
+  .mock-table { background: var(--c5); border-radius: 6px; border: 1px solid #e5e7eb; overflow: hidden; }
+  .mock-th { background: var(--c1-light); font-size: .5rem; color: var(--c1); font-weight: 700; text-transform: uppercase; padding: 5px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1fr; gap: 4px; }
+  .mock-row { font-size: .55rem; color: #374151; padding: 5px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1fr; gap: 4px; border-top: 1px solid #f3f4f6; }
+  .mock-badge { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: .48rem; font-weight: 600; }
+  .badge-green  { background: var(--c4-light); color: var(--c4); }
+  .badge-orange { background: var(--c1-light); color: var(--c1); }
+
+  /* ── Stats bar ── */
+  #stats { background: linear-gradient(90deg, var(--c1), var(--c2), var(--c4)); padding: 48px 20px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; text-align: center; }
+  .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--c5); line-height: 1; }
+  .stat-txt { font-size: .85rem; color: rgba(255,255,255,.8); margin-top: 4px; }
+
+  /* ── Módulos ── */
+  #modulos { background: var(--light); }
+  .modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .module-card {
+    background: var(--c5); border-radius: 12px; border: 1px solid #e5e7eb;
+    border-top: 3px solid var(--c3);
+    padding: 24px 22px; transition: box-shadow .2s, transform .2s;
+  }
+  .module-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.1); transform: translateY(-3px); border-top-color: var(--c4); }
+  .module-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 14px;
+  }
+  .icon-orange { background: var(--c1-light); color: var(--c1); }
+  .icon-teal   { background: var(--c4-light); color: var(--c4); }
+  .module-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .module-card p  { font-size: .83rem; color: var(--gray); line-height: 1.55; }
+  .module-card ul { list-style: none; margin-top: 10px; }
+  .module-card ul li { font-size: .8rem; color: #4b5563; padding: 2px 0; display: flex; align-items: center; gap: 6px; }
+  .module-card ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--c4); flex-shrink: 0; }
+
+  /* ── Beneficios ── */
+  #beneficios { background: var(--c5); }
+  .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .benefit-list { display: flex; flex-direction: column; gap: 18px; }
+  .benefit-item { display: flex; gap: 16px; align-items: flex-start; }
+  .benefit-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--c2), var(--c4));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; color: var(--c5); flex-shrink: 0;
+  }
+  .benefit-item h4 { font-size: .95rem; font-weight: 700; margin-bottom: 3px; }
+  .benefit-item p  { font-size: .82rem; color: var(--gray); line-height: 1.5; }
+  .benefits-visual {
+    background: linear-gradient(145deg, var(--c1-light), var(--c4-light));
+    border-radius: 20px; padding: 36px 30px; border: 1px solid #e5e7eb;
+  }
+  .visual-stat { display: flex; align-items: center; justify-content: space-between; background: var(--c5); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .visual-stat:last-child { margin-bottom: 0; }
+  .vs-label { font-size: .83rem; color: #374151; font-weight: 500; }
+  .vs-bar { flex: 1; height: 6px; background: #e5e7eb; border-radius: 3px; margin: 0 14px; }
+  .vs-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--c1), var(--c3), var(--c4)); }
+  .vs-pct { font-size: .83rem; font-weight: 700; color: var(--c1); }
+
+  /* ── Roles ── */
+  #roles { background: var(--light); }
+  .roles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+  .role-card {
+    background: var(--c5); border-radius: 12px;
+    border-top: 4px solid var(--c1);
+    padding: 24px 20px; box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  }
+  .role-card.teal-top { border-top-color: var(--c4); }
+  .role-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .role-sub  { font-size: .78rem; color: var(--gray); margin-bottom: 14px; }
+  .role-perms { list-style: none; }
+  .role-perms li { font-size: .78rem; color: #4b5563; padding: 3px 0; display: flex; align-items: center; gap: 7px; }
+  .role-perms li i { color: var(--c4); font-size: .75rem; }
+
+  /* ── Tech Stack ── */
+  #tecnologia { background: var(--c5); }
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+  .tech-card {
+    border: 1px solid #e5e7eb; border-radius: 12px;
+    padding: 22px 16px; text-align: center;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .tech-card:hover { border-color: var(--c4); box-shadow: 0 4px 14px rgba(0,128,128,.15); }
+  .tech-card i { font-size: 2rem; color: var(--c2); display: block; margin-bottom: 8px; }
+  .tech-card .tech-name { font-size: .88rem; font-weight: 700; }
+  .tech-card .tech-ver  { font-size: .72rem; color: var(--gray); margin-top: 2px; }
+
+  /* ── CTA ── */
+  #cta {
+    background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 40%, var(--c4) 100%);
+    text-align: center; padding: 80px 20px;
+  }
+  #cta h2 { font-size: 2rem; font-weight: 900; color: var(--c5); margin-bottom: 12px; }
+  #cta p  { color: rgba(255,255,255,.85); font-size: 1rem; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    background: var(--c5); color: var(--c1); font-weight: 700;
+    padding: 13px 32px; border-radius: 10px; border: none;
+    font-size: .95rem; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .2s; box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); }
+  .btn-outline-white {
+    background: transparent; color: var(--c5); font-weight: 700;
+    padding: 13px 30px; border-radius: 10px; border: 2px solid rgba(255,255,255,.6);
+    font-size: .95rem; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all .2s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,.15); border-color: var(--c5); }
+
+  /* ── Footer ── */
+  footer {
+    background: #111827; color: #9ca3af;
+    text-align: center; padding: 32px 20px;
+    font-size: .82rem;
+  }
+  footer strong { color: #fff; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    #hero .hero-inner, .benefits-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    nav .nav-links { display: none; }
+    #hero h1 { font-size: 2rem; }
+    .hero-mockup { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav>
+  <div class="logo">
+    <i class="bi bi-people-fill"></i>
+    Sistema RRHH
+  </div>
+  <div class="nav-links">
+    <a href="#modulos">Módulos</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#roles">Roles</a>
+    <a href="#tecnologia">Tecnología</a>
+    <a href="#cta">Contacto</a>
+  </div>
+  <a href="#cta" class="btn-nav"><i class="bi bi-envelope-fill"></i> Solicitar Demo</a>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="section-label"><i class="bi bi-award-fill"></i> Solución Empresarial</div>
+        <h1>Sistema Integral de<br><span>Recursos Humanos</span></h1>
+        <p>Digitaliza y centraliza toda la gestión de tu capital humano en una sola plataforma. Desde reclutamiento hasta la salida del empleado, con reportes en tiempo real para la toma de decisiones.</p>
+        <div class="hero-btns">
+          <a href="#modulos" class="btn-primary-main"><i class="bi bi-grid-1x2-fill"></i> Ver Módulos</a>
+          <a href="#cta" class="btn-secondary-main"><i class="bi bi-telephone-fill"></i> Agendar Demo</a>
+        </div>
+      </div>
+
+      <!-- Mini Mockup -->
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <span style="color:#fff;font-size:.65rem;margin-left:8px;font-weight:600;">Sistema RRHH — Dashboard</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-sidebar">
+            <div class="mock-brand"><i class="bi bi-people-fill"></i> RRHH</div>
+            <div class="mock-label">General</div>
+            <div class="mock-link active"><i class="bi bi-grid-1x2-fill"></i> Dashboard</div>
+            <div class="mock-label">Reclutamiento</div>
+            <div class="mock-link"><i class="bi bi-person-plus"></i> Candidatos</div>
+            <div class="mock-link"><i class="bi bi-briefcase"></i> Vacantes</div>
+            <div class="mock-label">Empleados</div>
+            <div class="mock-link"><i class="bi bi-person-badge"></i> Empleados</div>
+            <div class="mock-link"><i class="bi bi-calendar-check"></i> Asistencias</div>
+            <div class="mock-link"><i class="bi bi-clipboard-check"></i> Evaluaciones</div>
+            <div class="mock-label">Administración</div>
+            <div class="mock-link"><i class="bi bi-diagram-3"></i> Departamentos</div>
+          </div>
+          <div class="mockup-content">
+            <div class="mock-topbar">
+              <span>Dashboard Gerencial</span>
+              <span style="color:#9ca3af;">admin@empresa.com &nbsp;<i class="bi bi-person-circle"></i></span>
+            </div>
+            <div class="mock-stats">
+              <div class="mock-stat">
+                <div class="mock-stat-icon" style="color:#e28000"><i class="bi bi-person-badge-fill"></i></div>
+                <div class="mock-stat-val">48</div>
+                <div class="mock-stat-lbl">Empleados</div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-icon" style="color:#008080"><i class="bi bi-calendar-check-fill"></i></div>
+                <div class="mock-stat-val">96%</div>
+                <div class="mock-stat-lbl">Asistencia</div>
+              </div>
+              <div class="mock-stat">
+                <div class="mock-stat-icon" style="color:#ffc340"><i class="bi bi-briefcase-fill"></i></div>
+                <div class="mock-stat-val">5</div>
+                <div class="mock-stat-lbl">Vacantes</div>
+              </div>
+            </div>
+            <div class="mock-table">
+              <div class="mock-th"><span>Empleado</span><span>Departamento</span><span>Estado</span></div>
+              <div class="mock-row"><span>Ana García</span><span>RRHH</span><span><span class="mock-badge badge-green">Activo</span></span></div>
+              <div class="mock-row"><span>Luis Pérez</span><span>Ventas</span><span><span class="mock-badge badge-green">Activo</span></span></div>
+              <div class="mock-row"><span>María López</span><span>Tecnología</span><span><span class="mock-badge badge-orange">Permiso</span></span></div>
+              <div class="mock-row"><span>Carlos Ruiz</span><span>Finanzas</span><span><span class="mock-badge badge-green">Activo</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats ── -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num">11</div>
+        <div class="stat-txt">Módulos integrados</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-txt">Niveles de acceso y roles</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-txt">Web — sin instalación en PC</div>
+      </div>
+      <div>
+        <div class="stat-num">∞</div>
+        <div class="stat-txt">Empleados y registros</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Módulos ── -->
+<section id="modulos">
+  <div class="container">
+    <div class="section-label"><i class="bi bi-grid-fill"></i> Funcionalidades</div>
+    <h2 class="section-title">11 módulos para gestionar<br>todo el ciclo del empleado</h2>
+    <div class="divider-bar"></div>
+    <div class="modules-grid">
+
+      <div class="module-card">
+        <div class="module-icon icon-orange"><i class="bi bi-person-plus-fill"></i></div>
+        <h3>Reclutamiento y Selección</h3>
+        <p>Gestiona todo el proceso de atracción de talento desde un solo lugar.</p>
+        <ul>
+          <li>Registro de candidatos con CV adjunto</li>
+          <li>Publicación y seguimiento de vacantes</li>
+          <li>Programación y resultado de entrevistas</li>
+          <li>Estados: preseleccionado, entrevistado, contratado</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-green"><i class="bi bi-person-badge-fill"></i></div>
+        <h3>Expediente del Empleado</h3>
+        <p>Historial completo del colaborador desde el primer día.</p>
+        <ul>
+          <li>Datos personales y foto de perfil</li>
+          <li>Documentos digitales adjuntos</li>
+          <li>Cargo, departamento y fecha de ingreso</li>
+          <li>Conversión de candidato a empleado</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-orange"><i class="bi bi-currency-dollar"></i></div>
+        <h3>Control Salarial</h3>
+        <p>Historial de cambios salariales con trazabilidad completa.</p>
+        <ul>
+          <li>Registro de ajustes y promociones</li>
+          <li>Historial cronológico por empleado</li>
+          <li>Motivo y responsable de cada cambio</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-green"><i class="bi bi-calendar-check-fill"></i></div>
+        <h3>Control de Asistencias</h3>
+        <p>Registro diario de asistencia con múltiples estados.</p>
+        <ul>
+          <li>Presente, ausente, tardanza, permiso</li>
+          <li>Observaciones por registro</li>
+          <li>Filtros por empleado y fecha</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-orange"><i class="bi bi-exclamation-triangle-fill"></i></div>
+        <h3>Amonestaciones</h3>
+        <p>Control disciplinario documentado y con evidencias adjuntas.</p>
+        <ul>
+          <li>Llamado de atención, verbal, escrita, suspensión</li>
+          <li>Carga de documentos y evidencias</li>
+          <li>Registro del responsable y fecha</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-green"><i class="bi bi-clipboard-check-fill"></i></div>
+        <h3>Evaluaciones de Desempeño</h3>
+        <p>Evaluación estructurada con criterios ponderados.</p>
+        <ul>
+          <li>5 criterios: puntualidad, productividad, actitud, etc.</li>
+          <li>Puntuación de 0–20 por criterio (máx. 100 pts)</li>
+          <li>Calificación: Excelente / Bueno / Regular / Deficiente</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-orange"><i class="bi bi-journal-text"></i></div>
+        <h3>Bitácora / Timeline</h3>
+        <p>Línea de tiempo de todos los eventos del empleado.</p>
+        <ul>
+          <li>Historial cronológico unificado</li>
+          <li>Amonestaciones, salarios, evaluaciones</li>
+          <li>Vista rápida del trayecto en la empresa</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-green"><i class="bi bi-door-open-fill"></i></div>
+        <h3>Salidas de Personal</h3>
+        <p>Registro formal de bajas con motivo y documentación.</p>
+        <ul>
+          <li>Renuncia voluntaria, despido, jubilación, fallecimiento</li>
+          <li>Carta de renuncia adjunta</li>
+          <li>Fecha efectiva de salida</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-orange"><i class="bi bi-bar-chart-fill"></i></div>
+        <h3>Dashboard Gerencial</h3>
+        <p>Indicadores clave en tiempo real para la dirección.</p>
+        <ul>
+          <li>Total de empleados, asistencia, vacantes</li>
+          <li>Gráfico de rotación mensual</li>
+          <li>Alertas de evaluaciones pendientes</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-green"><i class="bi bi-diagram-3-fill"></i></div>
+        <h3>Gestión de Departamentos</h3>
+        <p>Estructura organizacional configurable.</p>
+        <ul>
+          <li>Alta, edición y baja de departamentos</li>
+          <li>Asignación de empleados por área</li>
+          <li>Vista de headcount por departamento</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon icon-orange"><i class="bi bi-person-gear-fill"></i></div>
+        <h3>Usuarios y Roles</h3>
+        <p>Control de acceso granular basado en roles.</p>
+        <ul>
+          <li>Super Admin, RRHH, Jefe Departamento, Consulta</li>
+          <li>Creación y gestión de usuarios del sistema</li>
+          <li>Asignación y revocación de roles</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Beneficios ── -->
+<section id="beneficios">
+  <div class="container">
+    <div class="benefits-grid">
+      <div>
+        <div class="section-label"><i class="bi bi-lightning-charge-fill"></i> ¿Por qué elegirnos?</div>
+        <h2 class="section-title">Beneficios que impulsan su negocio</h2>
+        <div class="divider-bar"></div>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="bi bi-cloud-check-fill"></i></div>
+            <div>
+              <h4>100% Web — Sin instalación</h4>
+              <p>Accede desde cualquier computador o dispositivo con navegador. No requiere software adicional ni mantenimiento local.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="bi bi-shield-lock-fill"></i></div>
+            <div>
+              <h4>Control de acceso por roles</h4>
+              <p>Cada usuario solo ve y modifica lo que le corresponde. Información sensible protegida en todo momento.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <div>
+              <h4>Decisiones basadas en datos</h4>
+              <p>Dashboard gerencial con métricas clave: asistencia, rotación, evaluaciones pendientes y más.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="bi bi-file-earmark-pdf-fill"></i></div>
+            <div>
+              <h4>Expediente digital completo</h4>
+              <p>Centraliza documentos, contratos, fotos y hojas de vida. Adiós a las carpetas físicas y al papel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-visual">
+        <h4 style="font-weight:700;margin-bottom:20px;color:#1f2937;">Impacto esperado en su empresa</h4>
+        <div class="visual-stat">
+          <span class="vs-label">Tiempo en gestión de RRHH</span>
+          <div class="vs-bar"><div class="vs-fill" style="width:75%"></div></div>
+          <span class="vs-pct">−75%</span>
+        </div>
+        <div class="visual-stat">
+          <span class="vs-label">Errores administrativos</span>
+          <div class="vs-bar"><div class="vs-fill" style="width:80%"></div></div>
+          <span class="vs-pct">−80%</span>
+        </div>
+        <div class="visual-stat">
+          <span class="vs-label">Tiempo en reportes</span>
+          <div class="vs-bar"><div class="vs-fill" style="width:90%"></div></div>
+          <span class="vs-pct">−90%</span>
+        </div>
+        <div class="visual-stat">
+          <span class="vs-label">Visibilidad de datos</span>
+          <div class="vs-bar"><div class="vs-fill" style="width:100%"></div></div>
+          <span class="vs-pct">+100%</span>
+        </div>
+        <div class="visual-stat">
+          <span class="vs-label">Satisfacción del equipo directivo</span>
+          <div class="vs-bar"><div class="vs-fill" style="width:95%"></div></div>
+          <span class="vs-pct">+95%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Roles ── -->
+<section id="roles">
+  <div class="container">
+    <div class="section-label"><i class="bi bi-shield-fill-check"></i> Control de Acceso</div>
+    <h2 class="section-title">Cuatro perfiles de usuario</h2>
+    <div class="divider-bar"></div>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-name"><i class="bi bi-shield-fill" style="color:#e28000"></i> Super Administrador</div>
+        <div class="role-sub">Control total del sistema</div>
+        <ul class="role-perms">
+          <li><i class="bi bi-check-circle-fill"></i> Todos los módulos</li>
+          <li><i class="bi bi-check-circle-fill"></i> Gestión de usuarios y roles</li>
+          <li><i class="bi bi-check-circle-fill"></i> Configuración del sistema</li>
+          <li><i class="bi bi-check-circle-fill"></i> Acceso a reportes globales</li>
+        </ul>
+      </div>
+      <div class="role-card teal-top">
+        <div class="role-name"><i class="bi bi-person-fill-gear" style="color:#008080"></i> Recursos Humanos</div>
+        <div class="role-sub">Operación completa de RRHH</div>
+        <ul class="role-perms">
+          <li><i class="bi bi-check-circle-fill"></i> Candidatos, vacantes, entrevistas</li>
+          <li><i class="bi bi-check-circle-fill"></i> Empleados y expedientes</li>
+          <li><i class="bi bi-check-circle-fill"></i> Asistencias, salarios, amonestaciones</li>
+          <li><i class="bi bi-check-circle-fill"></i> Evaluaciones y salidas</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-name"><i class="bi bi-person-fill-check" style="color:#d87800"></i> Jefe de Departamento</div>
+        <div class="role-sub">Supervisión de su equipo</div>
+        <ul class="role-perms">
+          <li><i class="bi bi-check-circle-fill"></i> Ver empleados de su área</li>
+          <li><i class="bi bi-check-circle-fill"></i> Registrar asistencias</li>
+          <li><i class="bi bi-check-circle-fill"></i> Solicitar evaluaciones</li>
+          <li><i class="bi bi-check-circle-fill"></i> Dashboard del departamento</li>
+        </ul>
+      </div>
+      <div class="role-card teal-top">
+        <div class="role-name"><i class="bi bi-eye-fill" style="color:#008080"></i> Consulta</div>
+        <div class="role-sub">Solo lectura de información</div>
+        <ul class="role-perms">
+          <li><i class="bi bi-check-circle-fill"></i> Ver dashboard</li>
+          <li><i class="bi bi-check-circle-fill"></i> Consultar empleados</li>
+          <li><i class="bi bi-check-circle-fill"></i> Ver reportes autorizados</li>
+          <li><i class="bi bi-check-circle-fill"></i> Sin modificaciones</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Tecnología ── -->
+<section id="tecnologia">
+  <div class="container">
+    <div class="section-label"><i class="bi bi-cpu-fill"></i> Tecnología</div>
+    <h2 class="section-title">Stack tecnológico robusto<br>y probado</h2>
+    <div class="divider-bar"></div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <i class="bi bi-filetype-php"></i>
+        <div class="tech-name">Laravel 11</div>
+        <div class="tech-ver">Backend / API</div>
+      </div>
+      <div class="tech-card">
+        <i class="bi bi-bootstrap-fill" style="color:#7952b3"></i>
+        <div class="tech-name">Bootstrap 5</div>
+        <div class="tech-ver">Interfaz responsiva</div>
+      </div>
+      <div class="tech-card">
+        <i class="bi bi-server"></i>
+        <div class="tech-name">MySQL</div>
+        <div class="tech-ver">Base de datos</div>
+      </div>
+      <div class="tech-card">
+        <i class="bi bi-shield-check"></i>
+        <div class="tech-name">Spatie Permission</div>
+        <div class="tech-ver">Roles y permisos</div>
+      </div>
+      <div class="tech-card">
+        <i class="bi bi-file-earmark-pdf-fill" style="color:#e53e3e"></i>
+        <div class="tech-name">DomPDF</div>
+        <div class="tech-ver">Reportes en PDF</div>
+      </div>
+      <div class="tech-card">
+        <i class="bi bi-file-earmark-spreadsheet-fill" style="color:#1d6f42"></i>
+        <div class="tech-name">Laravel Excel</div>
+        <div class="tech-ver">Exportación .xlsx</div>
+      </div>
+      <div class="tech-card">
+        <i class="bi bi-bar-chart-fill" style="color:#ff6384"></i>
+        <div class="tech-name">Chart.js</div>
+        <div class="tech-ver">Gráficos interactivos</div>
+      </div>
+      <div class="tech-card">
+        <i class="bi bi-lock-fill" style="color:#38a169"></i>
+        <div class="tech-name">Auth Segura</div>
+        <div class="tech-ver">Sesiones protegidas</div>
+      </div>
+    </div>
+
+    <!-- <div style="margin-top:48px;padding:28px 32px;background:var(--c1-light);border-radius:14px;border:1px solid var(--c3);display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+      <i class="bi bi-info-circle-fill" style="font-size:1.8rem;color:var(--c2);flex-shrink:0;"></i>
+      <div>
+        <strong style="color:var(--c1)">Requisitos de infraestructura mínimos:</strong><br>
+        <span style="font-size:.87rem;color:#4b5563;">Servidor con PHP 8.2+, MySQL 8.0+, 2 GB RAM. Compatible con hosting compartido, VPS o servidor local (XAMPP/Laragon). No requiere nube ni servicios externos.</span>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="cta">
+  <div class="container">
+    <h2>¿Listo para transformar<br>la gestión de su personal?</h2>
+    <p>Solicite una demostración personalizada sin costo. Le mostramos el sistema en funcionamiento con datos reales de su empresa.</p>
+    <div class="cta-buttons">
+      <a href="mailto:orteganestor1212@gmail.com?subject=Solicitud%20de%20Demo%20Sistema%20RRHH" class="btn-white">
+        <i class="bi bi-envelope-fill"></i> Solicitar Demo por Correo
+      </a>
+          <a href="https://wa.me/50768636331?text=Hola,%20quisiera%20obtener%20más%20información%20sobre%20su%20Sistema%20Integral%20de%20Recursos%20Humanos" 
+          class="btn-outline-white"
+          target="_blank">
+            <i class="bi bi-whatsapp"></i> Contactar por WhatsApp
+        </a>
+    </div>
+    <div style="margin-top:36px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap;">
+      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;"><i class="bi bi-check-circle-fill" style="color:#ffc340"></i> Demo sin costo</span>
+      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;"><i class="bi bi-check-circle-fill" style="color:#ffc340"></i> Implementación en menos de una semana</span>
+      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;"><i class="bi bi-check-circle-fill" style="color:#ffc340"></i> Soporte incluido</span>
+      <span style="color:rgba(255,255,255,.8);font-size:.85rem;display:flex;align-items:center;gap:6px;"><i class="bi bi-check-circle-fill" style="color:#ffc340"></i> Personalizable a su empresa</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <strong>Sistema Integral de Recursos Humanos</strong><br>
+ <br><br>
+  &copy; <script>document.write(new Date().getFullYear())</script> — Todos los derechos reservados
+</footer>
+
+</body>
+</html>
