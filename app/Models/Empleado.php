@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Model;
 
 class Empleado extends Model
 {
+    use Auditable;
+
     protected $fillable = [
         'candidato_id', 'codigo_empleado', 'nombre', 'apellido', 'cedula',
         'fecha_nacimiento', 'foto', 'direccion', 'telefono', 'email',
@@ -88,5 +91,15 @@ class Empleado extends Model
             'retirado' => 'danger',
             default    => 'secondary',
         };
+    }
+
+    public function scopeActivo($query)
+    {
+        return $query->where('estado', 'activo');
+    }
+
+    public function scopeByDepartamento($query, int $departamentoId)
+    {
+        return $query->where('departamento_id', $departamentoId);
     }
 }

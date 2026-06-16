@@ -207,7 +207,7 @@
     <button class="btn btn-sm btn-outline-secondary d-md-none" onclick="document.getElementById('sidebar').classList.toggle('show')">
         <i class="bi bi-list"></i>
     </button>
-    <span class="fw-semibold text-white ms-1">@yield('title', 'Dashboard')</span>
+    <span class="fw-semibold ms-1" style="color:var(--c1)">@yield('title', 'Dashboard')</span>
     <div class="ms-auto d-flex align-items-center gap-3">
         <span class="text-muted small"><i class="bi bi-person-circle me-1"></i>{{ auth()->user()->name }}</span>
         <form method="POST" action="{{ route('logout') }}" class="m-0">
@@ -223,16 +223,23 @@
 <main id="main-content">
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-3" role="alert">
-            <i class="bi bi-check-circle-fill"></i>
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <i class="bi bi-check-circle-fill flex-shrink-0"></i>
+            <div>{!! session('success') !!}</div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
         </div>
     @endif
     @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-2 mb-3" role="alert">
-            <i class="bi bi-exclamation-circle-fill"></i>
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <i class="bi bi-exclamation-circle-fill flex-shrink-0"></i>
+            <div>{!! session('error') !!}</div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+    @if(session('warning'))
+        <div class="alert alert-warning alert-dismissible fade show d-flex align-items-center gap-2 mb-3" role="alert">
+            <i class="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
+            <div>{!! session('warning') !!}</div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
         </div>
     @endif
     @if($errors->any())
